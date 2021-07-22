@@ -1,4 +1,4 @@
-# For production: waitress-serve run:app
+# For production: gunicorn run:app
 # For development: python run.py
 
 import os
