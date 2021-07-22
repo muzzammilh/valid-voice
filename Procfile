@@ -1,1 +1,1 @@
-web: gunicorn wsgi:app
+web: waitress-serve run:app
