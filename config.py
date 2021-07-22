@@ -1,6 +1,10 @@
 import os
-basedir = os.path.abspath(os.path.dirname(__file__))
 
+from dotenv import load_dotenv
+
+dotenv_path = os.path.join(os.path.dirname(__file__), '.env')
+if os.path.exists(dotenv_path):
+    load_dotenv(dotenv_path)
 
 class Config:
     SECRET_KEY = os.getenv('SECRET_KEY')
@@ -12,10 +16,11 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
+    ENV = 'development'
 
 
 class ProductionConfig(Config):
-    DEBUG = False
+    ENV = 'production'
 
     @classmethod
     def init_app(cls, app):
